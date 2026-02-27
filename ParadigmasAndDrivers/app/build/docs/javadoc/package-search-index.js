@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.universidad.eventos"},{"l":"com.universidad.eventos.domain"},{"l":"com.universidad.eventos.repository"},{"l":"com.universidad.eventos.service"}];updateSearchResults();

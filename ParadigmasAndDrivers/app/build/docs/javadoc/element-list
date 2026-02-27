@@ -1,0 +1,4 @@
+com.universidad.eventos
+com.universidad.eventos.domain
+com.universidad.eventos.repository
+com.universidad.eventos.service
