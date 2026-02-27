@@ -5,21 +5,26 @@ import com.universidad.eventos.repository.InMemoryEventoRepository;
 import com.universidad.eventos.service.EventoService;
 
 public class AppMain {
+
     public static void main(String[] args) {
 
-        Evento evento = new Evento("Congreso de Ingeniería", 2);
+        Evento evento = new Evento("Congreso de Ingeniería", 3);
+
         InMemoryEventoRepository repo = new InMemoryEventoRepository(evento);
-        EventoService service = new EventoService(repo, evento);
+
+        EventoService service = new EventoService(repo);
 
         service.registrarParticipante("1", "Ana");
         service.registrarParticipante("2", "Luis");
 
-        System.out.println("Cupos disponibles: " + service.cuposDisponibles());
+        System.out.println("Inscritos:");
+        service.listarParticipantes()
+                .forEach(p -> System.out.println(p.id() + " - " + p.nombre()));
 
-        service.registrarParticipante("3", "Pedro");
+        System.out.println("Cupos disponibles: " + service.cuposDisponibles());
 
         service.cancelarInscripcion("1");
 
-        System.out.println("Cupos después de cancelar: " + service.cuposDisponibles());
+        System.out.println("Cupos luego de cancelar: " + service.cuposDisponibles());
     }
 }

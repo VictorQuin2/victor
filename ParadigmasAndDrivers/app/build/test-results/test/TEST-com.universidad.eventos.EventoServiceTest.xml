@@ -1,43 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.universidad.eventos.EventoServiceTest" tests="4" skipped="0" failures="2" errors="0" timestamp="2026-02-27T06:12:56.633Z" hostname="DESKTOP-RPPIPOB" time="0.161">
+<testsuite name="com.universidad.eventos.EventoServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-02-27T20:17:52.352Z" hostname="DESKTOP-RPPIPOB" time="0.106">
   <properties/>
-  <testcase name="registrarParticipante_noDebeRegistrarSiNoHayCupos()" classname="com.universidad.eventos.EventoServiceTest" time="0.071"/>
-  <testcase name="registrarParticipante_debeRegistrarSiHayCupos()" classname="com.universidad.eventos.EventoServiceTest" time="0.024">
-    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
-	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
-	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
-	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
-	at com.universidad.eventos.EventoServiceTest.registrarParticipante_debeRegistrarSiHayCupos(EventoServiceTest.java:27)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
-  </testcase>
-  <testcase name="listarInscritos_debeRetornarListaCorrecta()" classname="com.universidad.eventos.EventoServiceTest" time="0.015">
-    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;2&gt; but was: &lt;1&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;2&gt; but was: &lt;1&gt;
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
-	at com.universidad.eventos.EventoServiceTest.listarInscritos_debeRetornarListaCorrecta(EventoServiceTest.java:68)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
-  </testcase>
-  <testcase name="cancelarInscripcion_debeLiberarCupo()" classname="com.universidad.eventos.EventoServiceTest" time="0.004"/>
-  <system-out><![CDATA[LOG: No hay cupos disponibles
-LOG: Registrado Ana
-LOG: Registrado Ana
-LOG: Registrado Ana
-LOG: Registrado Ana
-LOG: Cancelado Ana
-LOG: Cancelada inscripción de 1
-]]></system-out>
+  <testcase name="registrarParticipante_noDebeRegistrarSiNoHayCupos()" classname="com.universidad.eventos.EventoServiceTest" time="0.044"/>
+  <testcase name="registrarParticipante_debeRegistrarSiHayCupos()" classname="com.universidad.eventos.EventoServiceTest" time="0.004"/>
+  <testcase name="listarInscritos_debeRetornarListaCorrecta()" classname="com.universidad.eventos.EventoServiceTest" time="0.003"/>
+  <testcase name="cancelarInscripcion_debeLiberarCupo()" classname="com.universidad.eventos.EventoServiceTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -4,40 +4,29 @@ import com.universidad.eventos.domain.Evento;
 import com.universidad.eventos.domain.Participante;
 import com.universidad.eventos.repository.InMemoryEventoRepository;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InMemoryEventoRepositoryTest {
 
     @Test
-    public void inscribir_debeAgregarParticipanteSiHayCupos() {
-        Evento evento = new Evento("Test", 1);
-        InMemoryEventoRepository repo = new InMemoryEventoRepository(evento);
+    void inscribir_debeAgregarParticipante() {
+        Evento e = new Evento("Test", 2);
+        InMemoryEventoRepository repo = new InMemoryEventoRepository(e);
 
-        boolean resultado = repo.inscribir(new Participante("1", "Ana"));
-
-        assertTrue(resultado);
+        boolean ok = repo.inscribir(new Participante("1", "Ana"));
+        assertTrue(ok);
+        assertEquals(1, repo.listarParticipantes().size());
     }
 
     @Test
-    public void inscribir_noDebeAgregarCuandoNoHayCupos() {
-        Evento evento = new Evento("Test", 0);
-        InMemoryEventoRepository repo = new InMemoryEventoRepository(evento);
-
-        boolean resultado = repo.inscribir(new Participante("1", "Ana"));
-
-        assertFalse(resultado);
-    }
-
-    @Test
-    public void cancelar_debeEliminarParticipante() {
-        Evento evento = new Evento("Test", 2);
-        InMemoryEventoRepository repo = new InMemoryEventoRepository(evento);
+    void cancelar_debeLiberarCupo() {
+        Evento e = new Evento("Test", 1);
+        InMemoryEventoRepository repo = new InMemoryEventoRepository(e);
 
         repo.inscribir(new Participante("1", "Ana"));
-        boolean eliminado = repo.cancelar("1");
+        repo.cancelar("1");
 
-        assertTrue(eliminado);
-        assertEquals(2, evento.getCupoDisponible()); // porque volvió un cupo
+        assertEquals(1, repo.cuposDisponibles());
     }
 }

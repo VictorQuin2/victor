@@ -1,5 +1,5 @@
 package com.universidad.eventos.domain;
-
+/*
 public class Participante {
     private String id;
     private String nombre;
@@ -16,4 +16,6 @@ public class Participante {
     public String getNombre() {
         return nombre;
     }
-}
+}*/
+
+public record Participante(String id, String nombre) {}

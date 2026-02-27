@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Evento {
 
-    private String nombre;
-    private int cupoMaximo;
+    private final String nombre;
+    private final int cupoMaximo;
     private int cupoDisponible;
-    private List<Participante> inscritos = new ArrayList<>();
+    private final List<Participante> inscritos = new ArrayList<>();
 
     public Evento(String nombre, int cupoMaximo) {
         this.nombre = nombre;
@@ -44,6 +44,14 @@ public class Evento {
             return true;
         }
         return false;
+    }
+
+    public boolean cancelar(String idParticipante) {
+        boolean removed = inscritos.removeIf(p -> p.id().equals(idParticipante));
+        if (removed) {
+            aumentarCupo();
+        }
+        return removed;
     }
 
     public List<Participante> getInscritos() {

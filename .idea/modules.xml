@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/paradigmasanddrivers.iml" filepath="$PROJECT_DIR$/.idea/modules/paradigmasanddrivers.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/victor.iml" filepath="$PROJECT_DIR$/.idea/victor.iml" />
     </modules>
   </component>

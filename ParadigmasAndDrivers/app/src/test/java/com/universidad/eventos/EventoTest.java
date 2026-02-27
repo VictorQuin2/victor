@@ -1,7 +1,8 @@
 package com.universidad.eventos;
-import com.universidad.eventos.domain.Evento;
 
+import com.universidad.eventos.domain.Evento;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EventoTest {
@@ -24,8 +25,8 @@ class EventoTest {
     @Test
     void disminuirCupo_noDebePermitirNegativos() {
         Evento e = new Evento("Conferencia", 1);
-        e.disminuirCupo(); // pasa de 1 a 0
-        boolean ok = e.disminuirCupo(); // intenta pasar a -1
+        e.disminuirCupo();
+        boolean ok = e.disminuirCupo();
         assertFalse(ok);
         assertEquals(0, e.getCupoDisponible());
     }
