@@ -1,11 +1,14 @@
 package com.universidad.eventos.domain;
 
-// DRIVER: Consistencia de cupos -> esta clase garantiza que nunca haya sobrecupo
+import java.util.ArrayList;
+import java.util.List;
+
 public class Evento {
 
     private String nombre;
     private int cupoMaximo;
     private int cupoDisponible;
+    private List<Participante> inscritos = new ArrayList<>();
 
     public Evento(String nombre, int cupoMaximo) {
         this.nombre = nombre;
@@ -21,7 +24,6 @@ public class Evento {
         return cupoDisponible;
     }
 
-    // PARADIGMA IMPERATIVO: if/else controla la lógica de negocio
     public boolean disminuirCupo() {
         if (cupoDisponible > 0) {
             cupoDisponible--;
@@ -34,5 +36,17 @@ public class Evento {
         if (cupoDisponible < cupoMaximo) {
             cupoDisponible++;
         }
+    }
+
+    public boolean inscribir(Participante p) {
+        if (disminuirCupo()) {
+            inscritos.add(p);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Participante> getInscritos() {
+        return new ArrayList<>(inscritos);
     }
 }

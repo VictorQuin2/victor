@@ -6,6 +6,8 @@ import com.universidad.eventos.domain.Participante;
 
 public interface EventoRepository {
 
+    List<Participante> listarParticipantes();
+
     boolean inscribir(Participante participante);
 
     boolean cancelar(String idParticipante);

@@ -1,7 +1,6 @@
 package com.universidad.eventos.domain;
 
 public class Participante {
-
     private String id;
     private String nombre;
 

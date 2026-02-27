@@ -13,8 +13,15 @@ public class InMemoryEventoRepository implements EventoRepository {
     private Evento evento;
     private List<Participante> inscritos = new ArrayList<>();
 
+
     public InMemoryEventoRepository(Evento evento) {
         this.evento = evento;
+    }
+
+    @Override
+    public List<Participante> listarParticipantes() {
+        // usamos la lista interna de inscritos
+        return new java.util.ArrayList<>(inscritos);
     }
 
     @Override
@@ -52,4 +59,6 @@ public class InMemoryEventoRepository implements EventoRepository {
     public int cuposDisponibles() {
         return evento.getCupoDisponible();
     }
+
+
 }

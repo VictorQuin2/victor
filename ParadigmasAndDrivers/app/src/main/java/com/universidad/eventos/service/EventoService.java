@@ -1,55 +1,74 @@
 package com.universidad.eventos.service;
 
-import java.util.List;
-
 import com.universidad.eventos.domain.Evento;
 import com.universidad.eventos.domain.Participante;
 import com.universidad.eventos.repository.EventoRepository;
 
-// DRIVER: Mantenibilidad -> capa de servicio separa reglas de negocio
-// DRIVER: Consistencia -> validaciones antes de acceder al repositorio
+import java.util.List;
+
 public class EventoService {
 
-    private EventoRepository repository;
-    private Evento evento;
+    private final EventoRepository repository;
+    private final Evento evento;
 
     public EventoService(EventoRepository repository, Evento evento) {
         this.repository = repository;
         this.evento = evento;
     }
 
-    // PARADIGMA IMPERATIVO: if/else + control de flujo
+    // REGISTRO DE PARTICIPANTES
     public boolean registrarParticipante(String id, String nombre) {
 
-        // Validar que exista cupo
-        if (evento.getCupoDisponible() == 0) {
-            System.out.println("LOG: No hay cupos disponibles.");
-            return false;
-        }
-
-        // PARADIGMA FUNCIONAL: buscar duplicados con streams
-        boolean yaExiste = repository.listarInscritos()
+        // PARADIGMA FUNCIONAL: uso de streams para validar duplicados
+        boolean yaExiste = repository.listarParticipantes()
                 .stream()
                 .anyMatch(p -> p.getId().equals(id));
 
         if (yaExiste) {
-            System.out.println("LOG: Participante ya inscrito.");
+            System.out.println("LOG: Participante ya inscrito: " + id);
             return false;
         }
 
-        Participante p = new Participante(id, nombre);
-        return repository.inscribir(p);
+        // DRIVER: Consistencia de cupos
+        if (!evento.disminuirCupo()) {
+            System.out.println("LOG: No hay cupos disponibles");
+            return false;
+        }
+
+        Participante nuevo = new Participante(id, nombre);
+        boolean ok = repository.inscribir(nuevo);
+
+        if (ok) {
+            System.out.println("LOG: Registrado " + nombre);
+        }
+
+        return ok;
     }
 
+    // CANCELACIÓN
     public boolean cancelarInscripcion(String id) {
-        return repository.cancelar(id);
+        boolean ok = repository.cancelar(id);
+
+        if (ok) {
+            evento.aumentarCupo();
+            System.out.println("LOG: Cancelada inscripción de " + id);
+        }
+
+        return ok;
     }
 
+    // LISTADO (la que ya tenías)
     public List<Participante> listarInscritos() {
-        return repository.listarInscritos();
+        return repository.listarParticipantes();
     }
 
+    // DRIVER: verificación de cupos
     public int cuposDisponibles() {
         return repository.cuposDisponibles();
+    }
+
+    // Si ya tienes referencias a este método, lo dejamos como alias
+    public List<Participante> listarParticipantes() {
+        return repository.listarParticipantes();
     }
 }

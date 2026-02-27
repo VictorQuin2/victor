@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.universidad.eventos.InMemoryEventoRepositoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-27T06:12:56.812Z" hostname="DESKTOP-RPPIPOB" time="0.004">
+  <properties/>
+  <testcase name="cancelar_debeEliminarParticipante()" classname="com.universidad.eventos.InMemoryEventoRepositoryTest" time="0.002"/>
+  <testcase name="inscribir_debeAgregarParticipanteSiHayCupos()" classname="com.universidad.eventos.InMemoryEventoRepositoryTest" time="0.001"/>
+  <testcase name="inscribir_noDebeAgregarCuandoNoHayCupos()" classname="com.universidad.eventos.InMemoryEventoRepositoryTest" time="0.0"/>
+  <system-out><![CDATA[LOG: Registrado Ana
+LOG: Cancelado Ana
+LOG: Registrado Ana
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
